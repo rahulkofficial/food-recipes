@@ -16,7 +16,7 @@ export default function Recipes() {
   const accessToken = localStorage.getItem('accessToken');
   const [myrecipes,setMyrecipes]=useState([])
 
-
+  
   async function handleFavAdd(id){
     try{
       await axios.post(`http://127.0.0.1:8000/api/v1/recipes/add_fav/${id}`,null,{
@@ -35,7 +35,7 @@ export default function Recipes() {
     } catch (error) {
       if (error.response.status === 401) {
         try {
-          await RefreshTokenService()
+        await RefreshTokenService();
         } catch (refreshError) {
           console.error('Error refreshing access token:', refreshError);
         }
